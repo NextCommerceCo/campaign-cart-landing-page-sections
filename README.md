@@ -2,6 +2,10 @@
 
 A library of **74 composable landing page section partials** for building presale landing pages and advertorial presell pages — built on [`next-campaign-page-kit`](https://www.npmjs.com/package/next-campaign-page-kit).
 
+**Live previews:**
+- [Landing sections smoke test](https://next-campaign-page-sections.netlify.app/landing/)
+- [Presell-1 example](https://next-campaign-page-sections.netlify.app/presell-1/)
+
 ---
 
 ## In the Campaign Cart ecosystem
