@@ -287,3 +287,40 @@
   });
 
 }());
+
+
+  /* ─────────────────────────────────────────────────────────────────────
+   * 4. VIDEO AUTOPLAY ON SCROLL
+   *
+   * All <video> elements play when ~35% visible, pause when not.
+   * Add loading="lazy" to <video> tags to defer network download.
+   * ───────────────────────────────────────────────────────────────────── */
+
+(function () {
+  var videos = document.querySelectorAll('video');
+  if (!videos.length || !('IntersectionObserver' in window)) return;
+
+  videos.forEach(function (v) {
+    v.pause();
+    v.muted = true;
+    v.playsInline = true;
+    v.autoplay = false;
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var p = entry.target.play();
+        if (p && p.catch) p.catch(function () {});
+      } else {
+        entry.target.pause();
+      }
+    });
+  }, { threshold: 0.35 });
+
+  videos.forEach(function (v) { observer.observe(v); });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) videos.forEach(function (v) { v.pause(); });
+  });
+}());

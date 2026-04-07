@@ -1,0 +1,11 @@
+# Netlify (and compatible hosts) read this file to set HTTP response headers.
+# Paths are matched by the line starting with "/"; headers are indented under each path.
+# https://docs.netlify.com/routing/headers/
+
+# Cache images for 30 days
+/*.(jpg|jpeg|png|gif|webp|svg|ico|avif)
+  Cache-Control: public, max-age=2592000, immutable
+
+# Cache videos for 30 days
+/*.(mp4|webm)
+  Cache-Control: public, max-age=2592000, immutable
